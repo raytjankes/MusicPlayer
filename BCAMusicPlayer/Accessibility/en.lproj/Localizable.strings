@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  BCAMusicPlayer
+
+  Created by Ray on 26/06/23.
+  
+*/
+"hello" = "Hello";
+
+// MARK: LoginView
+"label_email" = "Email address";
+"label_password" = "Password";
+"label_login_redirect_register" = "Don't have an account?";
+"button_login_redirect_register" = "Sign up";
+"button_login_redirect_home" = "Login";
+
