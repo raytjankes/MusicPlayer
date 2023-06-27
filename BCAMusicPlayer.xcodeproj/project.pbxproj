@@ -14,8 +14,6 @@
 		7D30ED822A491683005C0FF7 /* BCAMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30ED812A491683005C0FF7 /* BCAMusicPlayerTests.swift */; };
 		7D30ED8C2A491683005C0FF7 /* BCAMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30ED8B2A491683005C0FF7 /* BCAMusicPlayerUITests.swift */; };
 		7D30ED8E2A491683005C0FF7 /* BCAMusicPlayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30ED8D2A491683005C0FF7 /* BCAMusicPlayerUITestsLaunchTests.swift */; };
-		7D30EDA12A492126005C0FF7 /* MusicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30EDA02A492126005C0FF7 /* MusicListView.swift */; };
-		7D30EDA52A49215B005C0FF7 /* MusicPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30EDA42A49215B005C0FF7 /* MusicPlayingView.swift */; };
 		7D7C073A2A492EDD000F73A1 /* Runtuh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D7C07392A492EDD000F73A1 /* Runtuh.mp3 */; };
 		7D7C073D2A49332A000F73A1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C073C2A49332A000F73A1 /* String.swift */; };
 		7D7C07412A493423000F73A1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D7C07432A493423000F73A1 /* Localizable.strings */; };
@@ -69,8 +67,6 @@
 		7D30ED872A491683005C0FF7 /* BCAMusicPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BCAMusicPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D30ED8B2A491683005C0FF7 /* BCAMusicPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCAMusicPlayerUITests.swift; sourceTree = "<group>"; };
 		7D30ED8D2A491683005C0FF7 /* BCAMusicPlayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCAMusicPlayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7D30EDA02A492126005C0FF7 /* MusicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListView.swift; sourceTree = "<group>"; };
-		7D30EDA42A49215B005C0FF7 /* MusicPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayingView.swift; sourceTree = "<group>"; };
 		7D7C07392A492EDD000F73A1 /* Runtuh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Runtuh.mp3; path = ../../../../../Downloads/Runtuh.mp3; sourceTree = "<group>"; };
 		7D7C073C2A49332A000F73A1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7D7C07422A493423000F73A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -255,8 +251,6 @@
 		7D7C074A2A4935E5000F73A1 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				7D30EDA02A492126005C0FF7 /* MusicListView.swift */,
-				7D30EDA42A49215B005C0FF7 /* MusicPlayingView.swift */,
 				7D7C074D2A4936B2000F73A1 /* SearchBarView.swift */,
 				7D7C07552A493D73000F73A1 /* ChangeLanguageView.swift */,
 				7D9CF4FC2A4985CE0048BF5C /* Blur.swift */,
@@ -419,14 +413,12 @@
 				7D7C077F2A497B52000F73A1 /* Album.swift in Sources */,
 				7DE99B102A4A66FF004084CB /* SongViewModel.swift in Sources */,
 				7D30ED732A491681005C0FF7 /* ContentView.swift in Sources */,
-				7D30EDA12A492126005C0FF7 /* MusicListView.swift in Sources */,
 				7D7C07562A493D73000F73A1 /* ChangeLanguageView.swift in Sources */,
 				7D7C07812A497B7E000F73A1 /* Song.swift in Sources */,
 				7D7C07492A4934F4000F73A1 /* Language.swift in Sources */,
 				7D7C07582A493D97000F73A1 /* Color.swift in Sources */,
 				7D7C07502A493702000F73A1 /* SplashView.swift in Sources */,
 				7D7C07852A497BEF000F73A1 /* HomeView.swift in Sources */,
-				7D30EDA52A49215B005C0FF7 /* MusicPlayingView.swift in Sources */,
 				7D30ED712A491681005C0FF7 /* BCAMusicPlayerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,10 +10,8 @@ import Firebase
 
 @main
 struct BCAMusicPlayerApp: App {
-    let data = DataViewModel()
     init() {
         FirebaseApp.configure()
-        data.loadAlbums() //doesnt work
     }
     
     var body: some Scene {
