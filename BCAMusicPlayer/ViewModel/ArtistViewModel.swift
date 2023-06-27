@@ -36,4 +36,8 @@ class ArtistViewModel: ObservableObject {
             }
         }
     }
+    
+    func getAllSongs(searchText: String) -> [Song]{
+        return artists.flatMap { $0.songs }.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    }
 }
