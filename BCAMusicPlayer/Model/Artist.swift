@@ -1,13 +1,13 @@
 //
-//  Album.swift
+//  Artist.swift
 //  BCAMusicPlayer
 //
-//  Created by Ray on 26/06/23.
+//  Created by Ray on 27/06/23.
 //
 
 import Foundation
 
-struct Album: Hashable {
+struct Artist: Hashable {
     var id = UUID()
     var name: String
     var image: String

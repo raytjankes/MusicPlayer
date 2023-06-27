@@ -17,7 +17,7 @@ struct BCAMusicPlayerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(LanguageViewModel())
+                .environmentObject(SongViewModel())
         }
     }
 }

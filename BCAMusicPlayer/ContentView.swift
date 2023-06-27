@@ -10,11 +10,14 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct ContentView: View {
-    
+    let artistVM = ArtistViewModel()
     var body: some View {
         NavigationView{
             ZStack{
-                HomeView(albumVM: AlbumViewModel())
+                HomeView(artistVM: artistVM)
+            }
+            .onAppear {
+                artistVM.loadAlbums()
             }
         }
     }
@@ -23,5 +26,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(SongViewModel())
     }
 }

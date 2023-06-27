@@ -11,18 +11,19 @@ import FirebaseStorage
 
 class SongViewModel: ObservableObject {
     
+    @Published var startedSong = false
     @Published var isPlaying = false
     @Published var player = AVPlayer()
     @Published var song : Song = Song(name: "dummy data", time: "dummy data", file: "dummy data")
-    @Published var album: Album = Album(name: "dummy data", image: "dummy data", songs: [Song(name: "dummy data", time: "dummy data", file: "dummy data")])
+    @Published var artist: Artist = Artist(name: "dummy data", image: "dummy data", songs: [Song(name: "dummy data", time: "dummy data", file: "dummy data")])
     
-    func startSong(song: Song, album:Album){
+    func startSong(song: Song, artist: Artist){
         self.song = song
-        self.album = album
+        self.artist = artist
         isPlaying = true
+        startedSong = true
         playSong()
     }
-    
     
     func playSong(){
         let storage = Storage.storage().reference(forURL : self.song.file)
@@ -45,7 +46,7 @@ class SongViewModel: ObservableObject {
     
     func playPause(){
         self.isPlaying.toggle()
-        if isPlaying == true{
+        if self.isPlaying == true{
             player.pause()
         }else{
             player.play()
@@ -53,14 +54,14 @@ class SongViewModel: ObservableObject {
     }
     
     func next(){
-        if let currentIndex = album.songs.firstIndex(of: song){
-            if currentIndex == album.songs.count - 1 {
+        if let currentIndex = artist.songs.firstIndex(of: song){
+            if currentIndex == artist.songs.count - 1 {
                 self.player.pause()
-                song = album.songs.first!
+                song = artist.songs.first!
                 self.playSong()
             }else{
                 self.player.pause()
-                song = album.songs[currentIndex + 1]
+                song = artist.songs[currentIndex + 1]
                 self.playSong()
             }
             
@@ -69,14 +70,14 @@ class SongViewModel: ObservableObject {
     }
     
     func previous(){
-        if let currentIndex = album.songs.firstIndex(of: song){
+        if let currentIndex = artist.songs.firstIndex(of: song){
             if currentIndex == 0{
                 self.player.pause()
-                song = album.songs.last!
+                song = artist.songs.last!
                 self.playSong()
             }else{
                 self.player.pause()
-                song = album.songs[currentIndex - 1]
+                song = artist.songs[currentIndex - 1]
                 self.playSong()
             }
             

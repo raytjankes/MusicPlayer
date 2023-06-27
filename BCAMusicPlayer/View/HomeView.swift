@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var albumVM: AlbumViewModel
-    @State var songVM: SongViewModel = SongViewModel()
-    @State var currentAlbum : Album?
+    @ObservedObject var artistVM: ArtistViewModel
+    @EnvironmentObject var songVM: SongViewModel
+    @State var currentArtist : Artist?
     var body: some View {
         NavigationView{
             ZStack{
                 ScrollView{
                     ScrollView (.horizontal, showsIndicators: false, content: {
                         LazyHStack {
-                            if(albumVM.albums.first == nil){
+                            if(artistVM.artists.first == nil){
                                 EmptyView()
                             }
                             else{
-                                ForEach(albumVM.albums, id:\.self) { album in
-                                    AlbumArt(album: album, isWithText: true).onTapGesture {
-                                        self.currentAlbum = album
+                                ForEach(artistVM.artists, id:\.self) { artist in
+                                    ArtistArt(artist: artist, isWithText: true).onTapGesture {
+                                        self.currentArtist = artist
                                     }
                                     
                                 }
@@ -33,14 +33,14 @@ struct HomeView: View {
                         
                     })
                     LazyVStack{
-                        if(albumVM.albums.first == nil){
+                        if(artistVM.artists.first == nil){
                             EmptyView()
                         }
                         else{
-                            ForEach(self.currentAlbum?.songs ?? albumVM.albums.first?.songs ?? [Song(name: "Song 1", time: "2:30" , file: ""),Song(name: "Song 1", time: "2:30", file: ""),Song(name: "Song 1", time: "2:30", file: ""),Song(name: "Song 1", time: "2:30", file: "")], id:\.self, content: { song in
-                                SongCell(album: (currentAlbum ?? albumVM.albums.first!), song: song)
+                            ForEach(self.currentArtist?.songs ?? artistVM.artists.first?.songs ?? [Song(name: "Song 1", time: "2:30" , file: ""),Song(name: "Song 1", time: "2:30", file: ""),Song(name: "Song 1", time: "2:30", file: ""),Song(name: "Song 1", time: "2:30", file: "")], id:\.self, content: { song in
+                                SongCell(artist: (currentArtist ?? artistVM.artists.first!), song: song)
                                     .onTapGesture {
-                                        songVM.startSong(song: song, album: currentAlbum ?? albumVM.albums.first!)
+                                        songVM.startSong(song: song, artist: currentArtist ?? artistVM.artists.first!)
                                         print(songVM.isPlaying)
                                     }
                             })
@@ -48,35 +48,33 @@ struct HomeView: View {
                         
                     }
                 }
-                if(songVM.isPlaying == true){
+                if(songVM.startedSong == true){
                     VStack(){
                         Spacer()
-                        MiniplayerView(songVM: $songVM)
+                        MiniplayerView()
                     }
-                    .background(.black)
                 }
 
             }
+            .transition(.move(edge: .top))
 
         }
-        .onAppear {
-            albumVM.loadAlbums()
-        }
+        .navigationBarHidden(true)
     }
 
 }
 
-struct AlbumArt:View{
-    var album :Album
+struct ArtistArt:View{
+    var artist :Artist
     var isWithText: Bool
     var body: some View {
         ZStack{
-            Image(album.image)
+            Image(artist.image)
                 .resizable()
             
             if isWithText == true{
                 ZStack{
-                    Text(album.name).foregroundColor(.white)
+                    Text(artist.name).foregroundColor(.white)
                 }
             }
 
@@ -90,7 +88,7 @@ struct AlbumArt:View{
 }
 
 struct SongCell : View{
-    var album: Album
+    var artist: Artist
     var song: Song
     var body: some View {
             VStack{
@@ -110,6 +108,7 @@ struct SongCell : View{
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(albumVM: AlbumViewModel())
+        HomeView(artistVM: ArtistViewModel())
+            .environmentObject(SongViewModel())
     }
 }
