@@ -11,7 +11,7 @@ struct MusicListView: View {
     @EnvironmentObject var language: LanguageViewModel
     let tracks = [
         ("Runtuh", Bundle.main.url(forResource: "Runtuh", withExtension: "mp3")!),
-        ("Track 2", URL(string: "https://example.com/track2.mp3")!),
+        ("Track 2", URL(string: "https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC")!),
         ("Track 3", URL(string: "https://example.com/track3.mp3")!)
     ] // Replace with your own track names and URLs
     
@@ -26,7 +26,9 @@ struct MusicListView: View {
             
             List(filteredTracks, id: \.0) { track in
                 Button(action: {
-                    musicVM.playTrack(named: track.0, fromURL: track.1)
+                    withAnimation {
+                        musicVM.playTrack(named: track.0, fromURL: track.1)
+                    }
                 }) {
                     Text(track.0)
                 }
