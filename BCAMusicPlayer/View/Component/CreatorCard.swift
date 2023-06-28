@@ -8,21 +8,17 @@
 import SwiftUI
 
 struct CreatorCard:View{
+    @EnvironmentObject var creatorVM: CreatorViewModel
     var creator :Creator
-    var isWithText: Bool
+    var isPlayer: Bool
     var body: some View {
         ZStack{
-            Image(creator.creatorImage)
-                .resizable()
-            
-            if isWithText == true{
-                ZStack{
-                    Text(creator.creatorName).foregroundColor(.white)
-                }
-            }
+            Image(uiImage: creator.creatorImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
 
         }
-        .frame(width: 170, height: 200, alignment: .center)
+        .frame(width: !isPlayer ? 170 : 270, height: !isPlayer ? 200 : 270, alignment: .center)
         .clipped()
         .cornerRadius(40)
         .shadow(radius: 10)
@@ -32,6 +28,7 @@ struct CreatorCard:View{
 
 struct CreatorCard_Previews: PreviewProvider {
     static var previews: some View {
-        CreatorCard(creator: Artist(name: "dummy", image: "trial-image", songs: [Song(name: "dummy data", time: "dummy data", file: "dummy data", artist: "dummy data")]), isWithText: true)
+        CreatorCard(creator: Artist(name: "dummy", image: UIImage(named:"trial-image")!, songs: [Song(name: "dummy data", time: "dummy data", file: "dummy data", artist: "dummy data")]), isPlayer: true)
+            .environmentObject(CreatorViewModel())
     }
 }

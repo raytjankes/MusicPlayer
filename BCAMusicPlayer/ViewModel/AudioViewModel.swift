@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import FirebaseStorage
+import SwiftUI
 
 class AudioViewModel: ObservableObject {
     @Published var enlargePlayer = false
@@ -15,13 +16,14 @@ class AudioViewModel: ObservableObject {
     @Published var isPlaying = false
     @Published var player = AVPlayer()
     @Published var audio : Audio = Song(name: "dummy data", time: "dummy data", file: "dummy data", artist: "dummy data")
-    @Published var creator: Creator = Artist(name: "dummy data", image: "trial-image", songs: [Song(name: "dummy data", time: "dummy data", file: "dummy data", artist: "dummy data")])
+    @Published var creator: Creator = Artist(name: "dummy data", image: UIImage(named: "trial-image")!, songs: [Song(name: "dummy data", time: "dummy data", file: "dummy data", artist: "dummy data")])
     
     func startSong(audio: Audio, creator: Creator){
         self.audio = audio
         self.creator = creator
         isPlaying = true
         startedSong = true
+        print("isPlaing: \(isPlaying)")
         playSong()
     }
     
@@ -51,6 +53,7 @@ class AudioViewModel: ObservableObject {
         }else{
             player.play()
         }
+        print("isPlaing: \(isPlaying)")
     }
     
     func next(){

@@ -14,11 +14,9 @@
 		7D30ED822A491683005C0FF7 /* BCAMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30ED812A491683005C0FF7 /* BCAMusicPlayerTests.swift */; };
 		7D30ED8C2A491683005C0FF7 /* BCAMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30ED8B2A491683005C0FF7 /* BCAMusicPlayerUITests.swift */; };
 		7D30ED8E2A491683005C0FF7 /* BCAMusicPlayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D30ED8D2A491683005C0FF7 /* BCAMusicPlayerUITestsLaunchTests.swift */; };
-		7D7C073D2A49332A000F73A1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C073C2A49332A000F73A1 /* String.swift */; };
 		7D7C074E2A4936B2000F73A1 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C074D2A4936B2000F73A1 /* SearchBarView.swift */; };
 		7D7C07502A493702000F73A1 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C074F2A493701000F73A1 /* SplashView.swift */; };
 		7D7C07582A493D97000F73A1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C07572A493D97000F73A1 /* Color.swift */; };
-		7D7C07762A4974A9000F73A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D7C07752A4974A9000F73A1 /* GoogleService-Info.plist */; };
 		7D7C07812A497B7E000F73A1 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C07802A497B7E000F73A1 /* Song.swift */; };
 		7D7C07852A497BEF000F73A1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C07842A497BEF000F73A1 /* HomeView.swift */; };
 		7D8A18ED2A4AB8F500C9B317 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A18EC2A4AB8F500C9B317 /* Creator.swift */; };
@@ -41,6 +39,8 @@
 		7DE2DA4F2A4BAF5A00B7EA32 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7DE2DA4E2A4BAF5A00B7EA32 /* FirebaseFirestore */; };
 		7DE2DA512A4BAF6100B7EA32 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7DE2DA502A4BAF6100B7EA32 /* FirebaseFirestoreSwift */; };
 		7DE2DA532A4BAF6700B7EA32 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7DE2DA522A4BAF6700B7EA32 /* FirebaseStorage */; };
+		7DE2DA562A4C509F00B7EA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DE2DA552A4C509F00B7EA32 /* GoogleService-Info.plist */; };
+		7DE2DA572A4C509F00B7EA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DE2DA552A4C509F00B7EA32 /* GoogleService-Info.plist */; };
 		7DE99B142A4A6CF1004084CB /* MiniplayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE99B132A4A6CF1004084CB /* MiniplayerView.swift */; };
 		7DE99B162A4A7AF8004084CB /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE99B152A4A7AF8004084CB /* Artist.swift */; };
 /* End PBXBuildFile section */
@@ -73,11 +73,9 @@
 		7D30ED872A491683005C0FF7 /* BCAMusicPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BCAMusicPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D30ED8B2A491683005C0FF7 /* BCAMusicPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCAMusicPlayerUITests.swift; sourceTree = "<group>"; };
 		7D30ED8D2A491683005C0FF7 /* BCAMusicPlayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCAMusicPlayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7D7C073C2A49332A000F73A1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7D7C074D2A4936B2000F73A1 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		7D7C074F2A493701000F73A1 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		7D7C07572A493D97000F73A1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		7D7C07752A4974A9000F73A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7D7C07802A497B7E000F73A1 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		7D7C07842A497BEF000F73A1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7D8A18EC2A4AB8F500C9B317 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
@@ -94,6 +92,7 @@
 		7DE2DA482A4BAF0000B7EA32 /* AudioViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModelTests.swift; sourceTree = "<group>"; };
 		7DE2DA4A2A4BAF1A00B7EA32 /* CreatorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorViewModelTests.swift; sourceTree = "<group>"; };
 		7DE2DA542A4BB8C800B7EA32 /* BCAMusicPlayer.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BCAMusicPlayer.xctestplan; sourceTree = "<group>"; };
+		7DE2DA552A4C509F00B7EA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7DE99B132A4A6CF1004084CB /* MiniplayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniplayerView.swift; sourceTree = "<group>"; };
 		7DE99B152A4A7AF8004084CB /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,12 +155,13 @@
 		7D30ED6F2A491681005C0FF7 /* BCAMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				7DE2DA552A4C509F00B7EA32 /* GoogleService-Info.plist */,
 				7D9CF5092A49A18F0048BF5C /* Info.plist */,
-				7D7C07752A4974A9000F73A1 /* GoogleService-Info.plist */,
 				7D7C073B2A49331E000F73A1 /* Extension */,
 				7D30ED9C2A492077005C0FF7 /* Model */,
 				7D30ED9B2A49206D005C0FF7 /* View */,
 				7D30ED722A491681005C0FF7 /* ContentView.swift */,
+				7D30ED702A491681005C0FF7 /* BCAMusicPlayerApp.swift */,
 				7D30ED9A2A492065005C0FF7 /* ViewModel */,
 				7D30ED742A491683005C0FF7 /* Assets.xcassets */,
 				7D30ED762A491683005C0FF7 /* Preview Content */,
@@ -210,7 +210,6 @@
 				7D7C074A2A4935E5000F73A1 /* Component */,
 				7D7C074F2A493701000F73A1 /* SplashView.swift */,
 				7D7C07842A497BEF000F73A1 /* HomeView.swift */,
-				7D30ED702A491681005C0FF7 /* BCAMusicPlayerApp.swift */,
 				7D9CF4FA2A4984AF0048BF5C /* PlayerView.swift */,
 			);
 			path = View;
@@ -232,7 +231,6 @@
 		7D7C073B2A49331E000F73A1 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7D7C073C2A49332A000F73A1 /* String.swift */,
 				7D7C07572A493D97000F73A1 /* Color.swift */,
 			);
 			path = Extension;
@@ -387,8 +385,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D30ED782A491683005C0FF7 /* Preview Assets.xcassets in Resources */,
-				7D7C07762A4974A9000F73A1 /* GoogleService-Info.plist in Resources */,
 				7D30ED752A491683005C0FF7 /* Assets.xcassets in Resources */,
+				7DE2DA562A4C509F00B7EA32 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DE2DA572A4C509F00B7EA32 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +412,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D7C073D2A49332A000F73A1 /* String.swift in Sources */,
 				7D8A18F72A4AD4E000C9B317 /* AudioViewModel.swift in Sources */,
 				7D8A18ED2A4AB8F500C9B317 /* Creator.swift in Sources */,
 				7D7C074E2A4936B2000F73A1 /* SearchBarView.swift in Sources */,

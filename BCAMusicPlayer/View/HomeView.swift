@@ -23,7 +23,7 @@ struct HomeView: View {
                         ScrollView{
                             VStack{
                                 HStack{
-                                    Text("Artists")
+                                    Text("Creators")
                                         .foregroundColor(Color.customText)
                                         .fontWeight(.bold)
                                         .padding(.horizontal)
@@ -44,7 +44,7 @@ struct HomeView: View {
                                     }
                                     else{
                                         ForEach(creatorVM.creators, id:\.self) { creator in
-                                            CreatorCard(creator: creator, isWithText: true)
+                                            CreatorCard(creator: creator, isPlayer: false)
                                                 .onTapGesture {
                                                     self.currentArtist = creator
                                                     
@@ -59,7 +59,7 @@ struct HomeView: View {
                             
                             VStack{
                                 HStack{
-                                    Text("Songs")
+                                    Text("Audios")
                                         .foregroundColor(Color.customText)
                                         .fontWeight(.bold)
                                         .padding(.horizontal)
@@ -104,10 +104,12 @@ struct HomeView: View {
                 }
                 
                 if(audioVM.startedSong == true){
-                    VStack(){
+                    VStack{
                         Spacer()
                         MiniplayerView()
-                    }
+                            
+                    }.ignoresSafeArea()
+
                 }
                 
             }

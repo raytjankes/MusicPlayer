@@ -53,25 +53,25 @@ class CreatorViewModelTests: XCTestCase {
         let song2 = Song(name: "Song 2", time: "3:45", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Artist 1")
         let song3 = Song(name: "Song 3", time: "4:15", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Artist 1")
         
-        let artist1 = Artist(name: "Artist 1", image: "image1", songs: [song1, song2, song3])
+        let artist1 = Artist(name: "Artist 1", image: UIImage(named: "trial-image")!, songs: [song1, song2, song3])
         
         let song4 = Song(name: "Song 4", time: "3:20", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Artist 2")
         let song5 = Song(name: "Song 5", time: "4:10", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Artist 2")
         let song6 = Song(name: "Song 6", time: "2:50", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Artist 2")
         
-        let artist2 = Artist(name: "Artist 2", image: "image2", songs: [song4, song5, song6])
+        let artist2 = Artist(name: "Artist 2", image: UIImage(named: "trial-image")!, songs: [song4, song5, song6])
         
         let episode1 = Episode(name: "Episode 1", time: "15:30", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", podcast: "Podcast 1")
         let episode2 = Episode(name: "Episode 2", time: "20:15", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", podcast: "Podcast 1")
         let episode3 = Episode(name: "Episode 3", time: "10:45", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", podcast: "Podcast 1")
         
-        let podcast1 = Podcast(name: "Podcast 1", image: "image3", episodes: [episode1, episode2, episode3])
+        let podcast1 = Podcast(name: "Podcast 1", image: UIImage(named: "trial-image")!, episodes: [episode1, episode2, episode3])
         
         let episode4 = Episode(name: "Episode 4", time: "25:20", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", podcast: "Podcast 2")
         let episode5 = Episode(name: "Episode 5", time: "18:10", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", podcast: "Podcast 2")
         let episode6 = Episode(name: "Episode 6", time: "12:50", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", podcast: "Podcast 2")
         
-        let podcast2 = Podcast(name: "Podcast 2", image: "image4", episodes: [episode4, episode5, episode6])
+        let podcast2 = Podcast(name: "Podcast 2", image: UIImage(named: "trial-image")!, episodes: [episode4, episode5, episode6])
         
         let creators: [Creator] = [artist1, artist2, podcast1, podcast2]
         

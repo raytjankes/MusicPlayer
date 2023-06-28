@@ -27,7 +27,7 @@ class AudioViewModelTests: XCTestCase {
     func testStartSong() {
         // Set up test data
         let song = Song(name: "Test Song", time: "2:30", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Test Artist")
-        let artist = Artist(name: "Test Artist", image: "test_image", songs: [song])
+        let artist = Artist(name: "Test Artist", image: UIImage(named: "trial-image")!, songs: [song])
         
         // Call the startSong() method
         sut.startSong(audio: song, creator: artist)
@@ -40,19 +40,19 @@ class AudioViewModelTests: XCTestCase {
     }
     
     func testPlayPause() {
-        // Simulate playing state
+        // Set playing state
         sut.isPlaying = true
         
-        // Call the playPause() method
+        // Call the method
         sut.playPause()
         
-        // Assert the expected results
+        // Assert the results
         XCTAssertFalse(sut.isPlaying, "Song should be paused")
         
         // Simulate paused state
         sut.isPlaying = false
         
-        // Call the playPause() method again
+        // Call the method again
         sut.playPause()
         
         // Assert results
@@ -64,16 +64,16 @@ class AudioViewModelTests: XCTestCase {
         let song1 = Song(name: "Song 1", time: "2:30", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Test Artist")
         let song2 = Song(name: "Song 2", time: "3:45", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Test Artist")
         let song3 = Song(name: "Song 3", time: "4:15", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Test Artist")
-        let artist = Artist(name: "Test Artist", image: "test_image", songs: [song1, song2, song3])
+        let artist = Artist(name: "Test Artist", image: UIImage(named: "trial-image")!, songs: [song1, song2, song3])
         
-        // Set the initial song
+        // Set initial song
         sut.audio = song2
         sut.creator = artist
         
-        // Call the previous() method
+        // Call the method
         sut.previous()
         
-        // Assert the expected results
+        // Assert results
         XCTAssertEqual(sut.audio, song1, "Incorrect song set")
         
         // Call the previous() method again
@@ -82,7 +82,7 @@ class AudioViewModelTests: XCTestCase {
         // Assert results
         XCTAssertEqual(sut.audio, song3, "Incorrect song set")
         
-        // Call the previous() method once more to reach the first song
+        // Reach the first song
         sut.previous()
         
         // Assert results
@@ -96,13 +96,13 @@ class AudioViewModelTests: XCTestCase {
         let song1 = Song(name: "Song 1", time: "2:30", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Test Artist")
         let song2 = Song(name: "Song 2", time: "3:45", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Test Artist")
         let song3 = Song(name: "Song 3", time: "4:15", file: "gs://musicplayer-5492d.appspot.com/songs/Runtuh.mp3", artist: "Test Artist")
-        let artist = Artist(name: "Test Artist", image: "test_image", songs: [song1, song2, song3])
+        let artist = Artist(name: "Test Artist", image: UIImage(named: "trial-image")!, songs: [song1, song2, song3])
         
-        // Set the initial song
+        // Set initial song
         sut.audio = song1
         sut.creator = artist
         
-        // Call the next() method
+        // Call the method
         sut.next()
         
         // Assert results
@@ -114,7 +114,7 @@ class AudioViewModelTests: XCTestCase {
         // Assert results
         XCTAssertEqual(sut.audio, song3, "Incorrect song set")
         
-        // Call the next() method once more to reach the last song
+        // Reach the last song
         sut.next()
         
         // Assert results

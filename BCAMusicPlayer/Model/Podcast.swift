@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class Podcast: Creator {
     private var episodes: [Episode]
     
-    init(name: String, image: String, episodes: [Episode]) {
+    init(name: String, image: UIImage, episodes: [Episode]) {
         self.episodes = episodes
         super.init(name: name, image: image)
     }

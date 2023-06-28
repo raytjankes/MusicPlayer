@@ -1,0 +1,55 @@
+# Setting the different stages of the pipeline: build, test, archive, and deploy.
+stages:
+  - build
+  - test
+  - archive
+  - deploy
+
+# Defines the "build_project" job that will run in the "build" stage. It cleans the project and then builds it using the specified scheme and destination. It has an "ios-tag" and "version-1.0" tag for runner selection.
+build_project:
+  stage: build
+  script:
+    - xcodebuild clean -project BCAMusicPlayer.xcodeproj -scheme BCAMusicPlayer
+    - xcodebuild build -project BCAMusicPlayer.xcodeproj -scheme BCAMusicPlayer -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4'
+  tags:
+    - ios-tag
+    - version-1.0
+
+# Defines the "build_project" job that will run in the "build" stage. It will trigger depending on the "build_project" job.  It ensures that the project's functionality is validated through automated testing, contributing to the overall quality and reliability of the software.
+test_project:
+  stage: test
+  dependencies:
+    - build_project
+  script:
+    - xcodebuild test -project BCAMusicPlayer.xcodeproj -scheme BCAMusicPlayer -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4'
+  tags:
+    - ios-tag
+    - version-1.0
+
+# Defines the "archive_build" job that will run in the "archive" stage. It will trigger depending on the "test_project" job. It specifies the artifact path for the generated archive file. It archives the project using the specified scheme and saves it to the specified archive path.
+archive_build:
+  stage: archive
+  dependencies:
+    - test_project
+  artifacts:
+    paths:
+      - BCAMusicPlayer.xcarchive
+  script:
+    - xcodebuild archive -project BCAMusicPlayer.xcodeproj -scheme BCAMusicPlayer -archivePath BCAMusicPlayer.xcarchive
+  tags:
+    - ios-tag
+    - version-1.0
+
+# Defines the "deploy_build" job that will run in the "deploy" stage. It will trigger depending on the "archive_build" job. It executes the "fastlane beta" command for deploying the archive. It is also specified to run only when changes are pushed to the "master" branch.
+deploy_build:
+  stage: deploy
+  dependencies:
+    - archive_build
+  script:
+    - fastlane beta
+    # A toolset for automating iOS deployment task, by default to TestFlight
+  tags:
+    - ios-tag
+    - version-1.0
+  only:
+    - master

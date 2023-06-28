@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 class Creator : Hashable {
     private var id: UUID
     private var name: String
-    private var image: String
+    private var image: UIImage
     
-    init(name: String, image: String) {
+    init(name: String, image: UIImage) {
         self.id = UUID()
         self.name = name
         self.image = image
@@ -35,7 +36,7 @@ class Creator : Hashable {
         return name
     }
     
-    var creatorImage: String {
+    var creatorImage: UIImage {
         return image
     }
 }

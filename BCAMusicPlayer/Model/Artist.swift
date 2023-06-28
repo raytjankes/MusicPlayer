@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class Artist: Creator {
     private var songs: [Song]
     
-    init(name: String, image: String, songs: [Song]) {
+    init(name: String, image: UIImage, songs: [Song]) {
         self.songs = songs
         super.init(name: name, image: image)
     }
