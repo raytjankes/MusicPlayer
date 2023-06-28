@@ -12,23 +12,28 @@ struct SearchBarView: View {
     var placeholder: String
 
     var body: some View {
-        HStack {
-            Image(systemName: "magnifyingglass")
-                .foregroundColor(.gray)
-            TextField(placeholder, text: $text)
-                .foregroundColor(.primary)
-            Button(action: {
-                text = ""
-            }) {
-                Image(systemName: "xmark.circle.fill")
+        VStack{
+            HStack {
+                Image(systemName: "magnifyingglass")
                     .foregroundColor(.gray)
-                    .opacity(text.isEmpty ? 0 : 1)
+                TextField(placeholder, text: $text)
+                    .foregroundColor(.primary)
+                Button(action: {
+                    text = ""
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.gray)
+                        .opacity(text.isEmpty ? 0 : 1)
+                }
             }
+            .padding(.vertical, 8)
+            .padding(.horizontal)
+            .background(Color.customHighlight)
+            .cornerRadius(10)
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 16)
-        .background(Color(.secondarySystemBackground))
-        .cornerRadius(10)
+        .padding()
+        .background(Color.customPrimary)
+
     }
 }
 

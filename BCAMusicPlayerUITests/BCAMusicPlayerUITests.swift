@@ -39,3 +39,4 @@ final class BCAMusicPlayerUITests: XCTestCase {
         }
     }
 }
+

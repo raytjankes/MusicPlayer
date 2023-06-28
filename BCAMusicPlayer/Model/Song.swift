@@ -7,9 +7,17 @@
 
 import Foundation
 
-struct Song:Hashable{
-    var id = UUID()
-    var name: String
-    var time: String
-    var file: String
+class Song: Audio {
+    private var artist: String
+    
+    init(name: String, time: String, file: String, artist: String) {
+        self.artist = artist
+        super.init(name: name, time: time, file: file)
+    }
+    
+    override var getAudioGroup: String {
+            return artist
+    }
 }
+
+

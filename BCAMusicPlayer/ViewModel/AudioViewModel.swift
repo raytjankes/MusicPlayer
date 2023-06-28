@@ -1,5 +1,5 @@
 //
-//  SongViewModel.swift
+//  AudioViewModel.swift
 //  BCAMusicPlayer
 //
 //  Created by Ray on 27/06/23.
@@ -9,24 +9,24 @@ import Foundation
 import AVFoundation
 import FirebaseStorage
 
-class SongViewModel: ObservableObject {
-    
+class AudioViewModel: ObservableObject {
+    @Published var enlargePlayer = false
     @Published var startedSong = false
     @Published var isPlaying = false
     @Published var player = AVPlayer()
-    @Published var song : Song = Song(name: "dummy data", time: "dummy data", file: "dummy data")
-    @Published var artist: Artist = Artist(name: "dummy data", image: "dummy data", songs: [Song(name: "dummy data", time: "dummy data", file: "dummy data")])
+    @Published var audio : Audio = Song(name: "dummy data", time: "dummy data", file: "dummy data", artist: "dummy data")
+    @Published var creator: Creator = Artist(name: "dummy data", image: "trial-image", songs: [Song(name: "dummy data", time: "dummy data", file: "dummy data", artist: "dummy data")])
     
-    func startSong(song: Song, artist: Artist){
-        self.song = song
-        self.artist = artist
+    func startSong(audio: Audio, creator: Creator){
+        self.audio = audio
+        self.creator = creator
         isPlaying = true
         startedSong = true
         playSong()
     }
     
     func playSong(){
-        let storage = Storage.storage().reference(forURL : self.song.file)
+        let storage = Storage.storage().reference(forURL : self.audio.audioFile)
         storage.downloadURL { (url, error) in
             if error != nil {
                 print("error")
@@ -54,14 +54,14 @@ class SongViewModel: ObservableObject {
     }
     
     func next(){
-        if let currentIndex = artist.songs.firstIndex(of: song){
-            if currentIndex == artist.songs.count - 1 {
+        if let currentIndex = creator.getWorks.firstIndex(of: audio){
+            if currentIndex == creator.getWorks.count - 1 {
                 self.player.pause()
-                song = artist.songs.first!
+                audio = creator.getWorks.first!
                 self.playSong()
             }else{
                 self.player.pause()
-                song = artist.songs[currentIndex + 1]
+                audio = creator.getWorks[currentIndex + 1]
                 self.playSong()
             }
             
@@ -70,14 +70,14 @@ class SongViewModel: ObservableObject {
     }
     
     func previous(){
-        if let currentIndex = artist.songs.firstIndex(of: song){
+        if let currentIndex = creator.getWorks.firstIndex(of: audio){
             if currentIndex == 0{
                 self.player.pause()
-                song = artist.songs.last!
+                audio = creator.getWorks.last!
                 self.playSong()
             }else{
                 self.player.pause()
-                song = artist.songs[currentIndex - 1]
+                audio = creator.getWorks[currentIndex - 1]
                 self.playSong()
             }
             

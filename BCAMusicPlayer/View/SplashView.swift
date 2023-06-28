@@ -10,13 +10,23 @@ import SwiftUI
 struct SplashView: View {
     var body: some View {
         VStack {
-            Text("Splash Screen")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding()
+            HStack{
+                Image(systemName: "beats.headphones")
+                    .resizable()
+                    .padding()
+                    .foregroundColor(Color.customHighlight)
+            }
+            .frame(width: 150,height: 150)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color.customPrimary)
+                    .shadow(radius: 10)
+            )
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.blue)
+        .background(Color.customSecondary)
         .edgesIgnoringSafeArea(.all)
     }
 }

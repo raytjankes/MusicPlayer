@@ -11,42 +11,51 @@ import FirebaseStorage
 import AVFoundation
 
 struct PlayerView: View {
-    @EnvironmentObject var songVM : SongViewModel
+    @EnvironmentObject var audioVM : AudioViewModel
     
     var body: some View {
         NavigationView{
         
         ZStack{
-            Image(songVM.artist.image).resizable().edgesIgnoringSafeArea(.all)
+            Image(audioVM.creator.creatorImage).resizable().edgesIgnoringSafeArea(.all)
             Blur(style: .dark).edgesIgnoringSafeArea(.all)
             VStack{
-                ArtistArt(artist: songVM.artist, isWithText: false)
+                Spacer().frame(height: 20)
+                Button {
+                    audioVM.enlargePlayer = false
+                } label: {
+                    Image(systemName: "chevron.down")
+                        .foregroundColor(Color.customHighlight.opacity(0.7))
+                }
+                Spacer().frame(height: 20)
+                CreatorCard(creator: audioVM.creator, isWithText: true)
                 Spacer()
                 ZStack{
-                    Color.white.cornerRadius(20).shadow(radius: 10)
                     VStack{
-                        NavigationLink(destination: HomeView(artistVM: ArtistViewModel())) {
+                        Button {
+                            audioVM.enlargePlayer = false
+                        } label: {
                             Image(systemName: "chevron.down")
-                                .foregroundColor(.black.opacity(0.5))
+                                .foregroundColor(Color.customHighlight.opacity(0.7))
                         }
-                        Text(songVM.song.name)
+                        Text(audioVM.audio.audioName)
                         HStack{
                             Button {
-                                songVM.previous()
+                                audioVM.previous()
                             } label: {
                                 Image(systemName: "arrow.left.circle")
                                     .resizable()
                                     .foregroundColor(.black.opacity(0.2))
                             }.frame(width: 70,height: 70, alignment: .center)
                             Button {
-                                songVM.playPause()
+                                audioVM.playPause()
                             } label: {
-                                Image(systemName: songVM.isPlaying ? "play.circle.fill" : "pause.circle.fill")
+                                Image(systemName: audioVM.isPlaying ? "play.circle.fill" : "pause.circle.fill")
                                     .resizable()
                                     .foregroundColor(.blue)
                             }.frame(width: 70,height: 70, alignment: .center)
                             Button {
-                                songVM.next()
+                                audioVM.next()
                             } label: {
                                 Image(systemName: "arrow.right.circle")
                                     .resizable()
@@ -73,6 +82,6 @@ struct PlayerView: View {
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerView()
-            .environmentObject(SongViewModel())
+            .environmentObject(AudioViewModel())
     }
 }

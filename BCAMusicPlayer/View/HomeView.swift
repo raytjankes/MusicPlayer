@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var artistVM: ArtistViewModel
-    @EnvironmentObject var songVM: SongViewModel
-    @State var currentArtist : Artist?
+    @EnvironmentObject var creatorVM: CreatorViewModel
+    @EnvironmentObject var audioVM: AudioViewModel
+    @State var currentArtist : Creator?
     @State private var searchText = ""
     
     var body: some View {
@@ -21,16 +21,34 @@ struct HomeView: View {
                     if(searchText.isEmpty){
                         
                         ScrollView{
+                            VStack{
+                                HStack{
+                                    Text("Artists")
+                                        .foregroundColor(Color.customText)
+                                        .fontWeight(.bold)
+                                        .padding(.horizontal)
+                                    Spacer()
+                                }
+                                GeometryReader { geometry in
+                                    Rectangle()
+                                        .frame(height: 1)
+                                        .foregroundColor(Color.customDisabledButton.opacity(0.4))
+                                    .padding(.trailing, geometry.size.width * 0.2)                               }
+                                
+                            }
+                            
                             ScrollView (.horizontal, showsIndicators: false, content: {
                                 LazyHStack {
-                                    if(artistVM.artists.first == nil){
+                                    if(creatorVM.creators.first == nil){
                                         EmptyView()
                                     }
                                     else{
-                                        ForEach(artistVM.artists, id:\.self) { artist in
-                                            ArtistArt(artist: artist, isWithText: true).onTapGesture {
-                                                self.currentArtist = artist
-                                            }
+                                        ForEach(creatorVM.creators, id:\.self) { creator in
+                                            CreatorCard(creator: creator, isWithText: true)
+                                                .onTapGesture {
+                                                    self.currentArtist = creator
+                                                    
+                                                }
                                             
                                         }
                                     }
@@ -38,16 +56,34 @@ struct HomeView: View {
                                 }
                                 
                             })
+                            
+                            VStack{
+                                HStack{
+                                    Text("Songs")
+                                        .foregroundColor(Color.customText)
+                                        .fontWeight(.bold)
+                                        .padding(.horizontal)
+                                    Spacer()
+                                }
+                                GeometryReader { geometry in
+                                    Rectangle()
+                                        .frame(height: 1)
+                                        .foregroundColor(Color.customDisabledButton.opacity(0.4))
+                                        .padding(.trailing, geometry.size.width * 0.2)
+                                }
+                                
+                            }
+                            
                             LazyVStack{
-                                if(artistVM.artists.first == nil){
+                                if(creatorVM.creators.first == nil){
                                     EmptyView()
                                 }
                                 else{
-                                    ForEach(self.currentArtist?.songs ?? artistVM.artists.first?.songs ?? [Song(name: "Song 1", time: "2:30" , file: ""),Song(name: "Song 1", time: "2:30", file: ""),Song(name: "Song 1", time: "2:30", file: ""),Song(name: "Song 1", time: "2:30", file: "")], id:\.self, content: { song in
-                                        SongCell(song: song)
+                                    ForEach(self.currentArtist?.getWorks ?? creatorVM.creators.first?.getWorks ?? [Audio(name: "Song 1", time: "2:30" , file: "")], id:\.self, content: { audio in
+                                        AudioItem(audio: audio)
                                             .onTapGesture {
-                                                songVM.startSong(song: song, artist: currentArtist ?? artistVM.artists.first!)
-                                                print(songVM.isPlaying)
+                                                audioVM.startSong(audio: audio, creator: currentArtist ?? creatorVM.creators.first!)
+                                                print(audioVM.isPlaying)
                                             }
                                     })
                                 }
@@ -55,76 +91,41 @@ struct HomeView: View {
                             }
                         }
                     } else {
-                        ForEach(artistVM.getAllSongs(searchText: searchText), id:\.self, content: { song in
-                            SongCell(song: song)
-                                .onTapGesture {
-                                    songVM.startSong(song: song, artist: currentArtist ?? artistVM.artists.first!)
-                                    print(songVM.isPlaying)
-                                }
-                        })
+                        ScrollView{
+                            ForEach(creatorVM.getAllAudios(searchText: searchText), id:\.self, content: { audio in
+                                AudioItem(audio: audio)
+                                    .onTapGesture {
+                                        audioVM.startSong(audio: audio, creator: currentArtist ?? creatorVM.creators.first!)
+                                    }
+                            })
+                        }
                     }
                     Spacer()
                 }
-                if(songVM.startedSong == true){
+                
+                if(audioVM.startedSong == true){
                     VStack(){
                         Spacer()
                         MiniplayerView()
                     }
                 }
-
+                
             }
-            .transition(.move(edge: .top))
-
+            
         }
         .navigationBarHidden(true)
     }
-
+    
 }
 
-struct ArtistArt:View{
-    var artist :Artist
-    var isWithText: Bool
-    var body: some View {
-        ZStack{
-            Image(artist.image)
-                .resizable()
-            
-            if isWithText == true{
-                ZStack{
-                    Text(artist.name).foregroundColor(.white)
-                }
-            }
 
-        }
-        .frame(width: 170, height: 200, alignment: .center)
-        .clipped()
-        .cornerRadius(20)
-        .shadow(radius: 10)
-        .padding(20)
-    }
-}
 
-struct SongCell : View{
-    var song: Song
-    var body: some View {
-            VStack{
-                HStack{
-                    Image(systemName: "opticaldisc.fill").resizable().frame(width: 60, height: 60, alignment: .center)
-                        .foregroundColor(.blue)
-                    Text(song.name)
-                    Spacer()
-                    Text(song.time)
-                }
-                .padding(.vertical)
-                Divider()
-            }.padding(.horizontal)
-    }
-}
 
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(artistVM: ArtistViewModel())
-            .environmentObject(SongViewModel())
+        HomeView()
+            .environmentObject(AudioViewModel())
+            .environmentObject(CreatorViewModel())
     }
 }

@@ -9,12 +9,12 @@ import SwiftUI
 
 extension Color {
     
-    static let customPrimary = Color(hex: "0xFFFFFF")
-    static let customSecondary = Color(hex: "0x6D6E70")
-    static let customBackground = Color(hex: "0x152852")
-    static let customDarkBackground = Color(hex: "0x060D21")
-    static let customButton = Color(hex: "0xE71D4D")
-    static let customDisabledButton = Color(hex: "0x986B77")
+    static let customPrimary = Color(hex: "0x32CCD1")
+    static let customSecondary = Color(hex: "0x27C4C7")
+    static let customText = Color(hex: "0x081F42")
+    static let customHighlight = Color(hex: "0xFFFFFF")
+    static let customButton = Color(hex: "0x283FFF")
+    static let customDisabledButton = Color(hex: "0x8993A4")
     
     
     // Function to convert hexcode to Color

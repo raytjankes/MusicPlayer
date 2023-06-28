@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "FB6BA9B7-59E9-4D2E-A403-5B968BF76BD5",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:BCAMusicPlayer.xcodeproj",
+      "identifier" : "7D30ED6C2A491681005C0FF7",
+      "name" : "BCAMusicPlayer"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BCAMusicPlayer.xcodeproj",
+        "identifier" : "7D30ED7C2A491683005C0FF7",
+        "name" : "BCAMusicPlayerTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BCAMusicPlayer.xcodeproj",
+        "identifier" : "7D30ED862A491683005C0FF7",
+        "name" : "BCAMusicPlayerUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

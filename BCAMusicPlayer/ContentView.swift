@@ -10,14 +10,29 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct ContentView: View {
-    let artistVM = ArtistViewModel()
+    @State private var showSplash = true
+    @EnvironmentObject var artistVM : CreatorViewModel
+    
     var body: some View {
         NavigationView{
             ZStack{
-                HomeView(artistVM: artistVM)
-            }
-            .onAppear {
-                artistVM.loadAlbums()
+                if showSplash {
+                    SplashView()
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation {
+                                    showSplash = false
+                                }
+                            }
+                        }
+                } else {
+                    NavigationView {
+                        HomeView()
+                    }
+                    
+                }
+            }.onAppear {
+                artistVM.loadAudios()
             }
         }
     }
@@ -26,6 +41,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(SongViewModel())
+            .environmentObject(AudioViewModel())
+            .environmentObject(CreatorViewModel())
     }
 }
