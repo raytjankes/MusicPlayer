@@ -45,6 +45,7 @@
 		7DE99B162A4A7AF8004084CB /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE99B152A4A7AF8004084CB /* Artist.swift */; };
 		7DF09F992A58F31400A70F00 /* ItunesMusicServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF09F982A58F31400A70F00 /* ItunesMusicServices.swift */; };
 		7DF09F9B2A58F6C500A70F00 /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF09F9A2A58F6C500A70F00 /* SongListView.swift */; };
+		7DF09F9D2A5903CE00A70F00 /* ItunesMusicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF09F9C2A5903CE00A70F00 /* ItunesMusicItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		7DE99B152A4A7AF8004084CB /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		7DF09F982A58F31400A70F00 /* ItunesMusicServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesMusicServices.swift; sourceTree = "<group>"; };
 		7DF09F9A2A58F6C500A70F00 /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
+		7DF09F9C2A5903CE00A70F00 /* ItunesMusicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesMusicItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 				7DE99B132A4A6CF1004084CB /* MiniplayerView.swift */,
 				7D8A18FA2A4AEAEF00C9B317 /* CreatorCard.swift */,
 				7D8A18FC2A4AEB1A00C9B317 /* AudioItem.swift */,
+				7DF09F9C2A5903CE00A70F00 /* ItunesMusicItem.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			files = (
 				7D8A18F72A4AD4E000C9B317 /* AudioViewModel.swift in Sources */,
 				7D8A18ED2A4AB8F500C9B317 /* Creator.swift in Sources */,
+				7DF09F9D2A5903CE00A70F00 /* ItunesMusicItem.swift in Sources */,
 				7D7C074E2A4936B2000F73A1 /* SearchBarView.swift in Sources */,
 				7D8A18F32A4ABC2800C9B317 /* Audio.swift in Sources */,
 				7DE99B142A4A6CF1004084CB /* MiniplayerView.swift in Sources */,

@@ -11,7 +11,6 @@ struct SongListView: View {
     @State private var songs: [Song] = []
     @State private var searchText = ""
     @State private var debouncedText = ""
-    @State private var filteredSongs: [Song] = []
     
     private let musicService: iTunesMusicServices = iTunesMusicAPI()
     
@@ -19,56 +18,63 @@ struct SongListView: View {
         NavigationView {
             VStack {
                 SearchBarView(text: $searchText, placeholder: "Search..", debouncedText: $debouncedText)
-                if(filteredSongs.isEmpty){
+                if(songs.isEmpty){
                     Spacer()
                     Text("Songs not found")
                         .foregroundColor(Color.customDisabledButton)
                     Spacer()
                 }
                 else{
-                    List(filteredSongs, id: \.audioName) { song in
-                        VStack(alignment: .leading) {
-                            Text(song.audioName)
-                                .font(.headline)
-                            Text(song.getAudioGroup)
-                                .font(.subheadline)
+                    ScrollView{
+                        
+                        ForEach(songs, id: \.audioName) { song in
+                            ItunesMusicItem(audio: song)
                         }
                     }
                 }
                 
             }
-            .navigationTitle("Song List")
+            .navigationTitle("Itunes Song List")
             .onAppear {
                 fetchSongs()
             }
             .onChange(of: debouncedText) { _ in
-                filterSongs(with: debouncedText)
+                filterSongs()
             }
         }
     }
     
     private func fetchSongs() {
-        musicService.searchMusic(withTerm: "Shawn Mendes") { result in
+        // I can't do a top 100 songs the search term is a must, so I placed a top singer
+        musicService.searchMusic(withTerm: "Benyamin Sueb") { result in
             switch result {
             case .success(let songs):
                 DispatchQueue.main.async {
                     self.songs = songs
-                    filterSongs(with: searchText)
-                }
+                                    }
             case .failure(let error):
                 print("Error fetching songs: \(error)")
             }
         }
     }
     
-    private func filterSongs(with query: String) {
-        if query.isEmpty {
-            filteredSongs = songs
-        } else {
-            filteredSongs = songs.filter { song in
-                song.audioName.localizedCaseInsensitiveContains(query) || song.getAudioGroup.localizedCaseInsensitiveContains(query)
+    private func filterSongs() {
+        if(debouncedText.isEmpty){
+         fetchSongs()
+        }
+        else{
+            musicService.searchMusic(withTerm: debouncedText) { result in
+                switch result {
+                case .success(let songs):
+                    DispatchQueue.main.async {
+                        self.songs = songs
+                    }
+                case .failure(let error):
+                    print("Error fetching songs: \(error)")
+                }
             }
         }
+
     }
 }
 

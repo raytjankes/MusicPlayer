@@ -14,6 +14,7 @@ protocol iTunesMusicServices {
 }
 
 class iTunesMusicAPI: iTunesMusicServices {
+    
     func searchMusic(withTerm term: String, completion: @escaping (Result<[Song], Error>) -> Void) {
         let searchTerm = term.replacingOccurrences(of: " ", with: "+")
         let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=song"
@@ -52,10 +53,12 @@ class iTunesMusicAPI: iTunesMusicServices {
     }
 }
 
+// Specifying our struct to be the recieving blueprint
 struct Response: Codable {
     let results: [Music]
 }
 
+// Needs precise naming for key value from jscript to enter this struct
 struct Music: Codable {
     let trackName: String
     let artistName: String
