@@ -12,12 +12,12 @@ struct HomeView: View {
     @EnvironmentObject var audioVM: AudioViewModel
     @State var currentArtist : Creator?
     @State private var searchText = ""
-    
+    @State private var displayText = ""
     var body: some View {
         NavigationView{
             ZStack{
                 VStack{
-                    SearchBarView(text: $searchText, placeholder: "Search..")
+                    SearchBarView(text: $displayText, placeholder: "Search..", debouncedText: $searchText)
                     if(searchText.isEmpty){
                         
                         ScrollView{

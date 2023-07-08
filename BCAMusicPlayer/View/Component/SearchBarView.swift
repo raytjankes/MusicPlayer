@@ -10,7 +10,11 @@ import SwiftUI
 struct SearchBarView: View {
     @Binding var text: String
     var placeholder: String
-
+    
+    @Binding var debouncedText : String
+    let debounceInterval = 0.5
+    @State var timer: Timer?
+    
     var body: some View {
         VStack{
             HStack {
@@ -18,6 +22,9 @@ struct SearchBarView: View {
                     .foregroundColor(.gray)
                 TextField(placeholder, text: $text)
                     .foregroundColor(.primary)
+                    .onChange(of: text) { text in
+                        debounceSearchText(text)
+                    }
                 Button(action: {
                     text = ""
                 }) {
@@ -33,14 +40,23 @@ struct SearchBarView: View {
         }
         .padding()
         .background(Color.customPrimary)
-
+        
+    }
+    
+    func debounceSearchText(_ text: String) {
+        timer?.invalidate() // This is what I forgot!!
+        
+        timer = Timer.scheduledTimer(withTimeInterval: debounceInterval, repeats: false) { _ in
+            debouncedText = text
+        }
     }
 }
 
 struct SearchBarView_Previews: PreviewProvider {
     @State static var searchString = ""
+    @State static var debounceString = ""
     
     static var previews: some View {
-        SearchBarView(text: $searchString, placeholder: "Search..")
+        SearchBarView(text: $searchString, placeholder: "Search..", debouncedText: $debounceString)
     }
 }
