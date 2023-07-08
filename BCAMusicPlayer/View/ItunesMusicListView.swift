@@ -1,5 +1,5 @@
 //
-//  SongListView.swift
+//  ItunesMusicListView.swift
 //  BCAMusicPlayer
 //
 //  Created by Ray on 08/07/23.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct SongListView: View {
-    @State private var songs: [Song] = []
+struct ItunesMusicListView: View {
+    @State private var songs: [ItunesMusic] = []
     @State private var searchText = ""
     @State private var debouncedText = ""
     
@@ -17,7 +17,7 @@ struct SongListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBarView(text: $searchText, placeholder: "Search..", debouncedText: $debouncedText)
+                SearchBarView(text: $searchText, debouncedText: $debouncedText, placeholder: "Search..")
                 if(songs.isEmpty){
                     Spacer()
                     Text("Songs not found")
@@ -28,13 +28,13 @@ struct SongListView: View {
                     ScrollView{
                         
                         ForEach(songs, id: \.audioName) { song in
-                            ItunesMusicItem(audio: song)
+                            ItunesMusicItem(music: song)
                         }
                     }
                 }
                 
             }
-            .navigationTitle("Itunes Song List")
+            .navigationTitle("ITunes Song List")
             .onAppear {
                 fetchSongs()
             }
@@ -78,8 +78,8 @@ struct SongListView: View {
     }
 }
 
-struct SongListView_Previews: PreviewProvider {
+struct ItunesMusicListView_Previews: PreviewProvider {
     static var previews: some View {
-        SongListView()
+        ItunesMusicListView()
     }
 }

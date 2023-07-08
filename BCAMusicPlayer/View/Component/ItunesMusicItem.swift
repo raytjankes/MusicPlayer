@@ -8,38 +8,56 @@
 import SwiftUI
 
 struct ItunesMusicItem: View {
-    var audio: Audio
+    var music: ItunesMusic
+    
     var body: some View {
-            VStack{
-                HStack{
-                    ZStack{
-                        Image(systemName: "opticaldisc.fill").resizable().frame(width: 30, height: 30, alignment: .center)
-                            .foregroundColor(Color.customHighlight)
-                            .padding(10)
-                            .background(
-                                Circle()
-                                    .foregroundColor(Color.customPrimary)
-                            )
-                    }
-                    .padding(.trailing)
+        VStack {
+            HStack {
+                if let imageURL = URL(string: music.songImageURL) {
                     
-                    VStack(alignment: .leading){
-                        
-                        Text(audio.audioName)
-                        Text(audio.getAudioGroup)
-                            .foregroundColor(Color.customDisabledButton)
+                    // Set a default image
+                    AsyncImage(url: imageURL) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        default:
+                            Image(systemName: "photo")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.gray)
+                        }
                     }
-                    Spacer()
-                    Text(convertMillisecondsToMinutesSeconds(milliseconds: Int(audio.audioTime) ?? 0))
+                    .frame(width: 50, height: 50)
+                    .padding(2 )
+                    .background(
+                        Rectangle()
+                            .foregroundColor(.customPrimary)
+                    )
+                    .padding(.trailing)
                 }
-                Divider()
+                
+                VStack(alignment: .leading) {
+                    Text(music.audioName)
+                    Text(music.getAudioGroup)
+                        .foregroundColor(.customDisabledButton)
+                }
+                
+                Spacer()
+                
+                Text(convertMillisecondsToMinutesSeconds(milliseconds: Int(music.audioTime) ?? 0))
             }
-            .padding(.horizontal)
-            .onTapGesture {
-                openExternalURL()
-            }
+            
+            Divider()
+        }
+        .padding(.horizontal)
+        .onTapGesture {
+            openExternalURL()
+        }
     }
     
+    // Convert the milisecond from JSON to minute:second
     func convertMillisecondsToMinutesSeconds(milliseconds: Int) -> String {
         let totalSeconds = milliseconds / 1000
         let minutes = totalSeconds / 60
@@ -48,8 +66,10 @@ struct ItunesMusicItem: View {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
+    // Redirect users to Apple Music since the API does not allow music Streaming
     func openExternalURL() {
-        UIApplication.shared.open(URL(string: audio.audioFile)!, options: [:]) { success in
+        if let url = URL(string: music.audioFile) {
+            UIApplication.shared.open(url, options: [:]) { success in
                 if success {
                     print("Apple Music URL opened successfully")
                 } else {
@@ -57,10 +77,12 @@ struct ItunesMusicItem: View {
                 }
             }
         }
+    }
 }
+
 
 struct ItunesMusicItem_Previews: PreviewProvider {
     static var previews: some View {
-        ItunesMusicItem(audio: Song(name: "dummy data", time: "dummy data", file: "dummy data", artist: "dummy data"))
+        ItunesMusicItem(music: ItunesMusic(name: "dummy data", time: "dummy data", file: "dummy data", singer: "dummy data", imageURL: ""))
     }
 }

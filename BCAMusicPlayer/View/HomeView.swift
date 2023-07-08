@@ -17,7 +17,7 @@ struct HomeView: View {
         NavigationView{
             ZStack{
                 VStack{
-                    SearchBarView(text: $displayText, placeholder: "Search..", debouncedText: $searchText)
+                    SearchBarView(text: $displayText, debouncedText: $searchText, placeholder: "Search..")
                     if(searchText.isEmpty){
                         
                         ScrollView{

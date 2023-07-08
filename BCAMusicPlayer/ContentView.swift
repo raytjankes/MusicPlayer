@@ -16,7 +16,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                SongListView()
+                // altered page navigation
+                ItunesMusicListView()
             }
 //                if showSplash {
 //                    SplashView()

@@ -7,15 +7,14 @@
 
 import Foundation
 
-import Foundation
-
+// Using protocol for a more loose coupling programming
 protocol iTunesMusicServices {
-    func searchMusic(withTerm term: String, completion: @escaping (Result<[Song], Error>) -> Void)
+    func searchMusic(withTerm term: String, completion: @escaping (Result<[ItunesMusic], Error>) -> Void)
 }
 
 class iTunesMusicAPI: iTunesMusicServices {
     
-    func searchMusic(withTerm term: String, completion: @escaping (Result<[Song], Error>) -> Void) {
+    func searchMusic(withTerm term: String, completion: @escaping (Result<[ItunesMusic], Error>) -> Void) {
         let searchTerm = term.replacingOccurrences(of: " ", with: "+")
         let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=song"
         
@@ -40,7 +39,7 @@ class iTunesMusicAPI: iTunesMusicServices {
                 let response = try decoder.decode(Response.self, from: data)
                 
                 let songs = response.results.map { music in
-                    Song(name: music.trackName, time: String(music.trackTimeMillis), file: music.trackViewUrl, artist: music.artistName)
+                    ItunesMusic(name: music.trackName, time: String(music.trackTimeMillis), file: music.trackViewUrl, singer: music.artistName, imageURL: music.artworkUrl100 )
                 }
                 
                 completion(.success(songs))
@@ -64,4 +63,5 @@ struct Music: Codable {
     let artistName: String
     let trackTimeMillis: Int
     let trackViewUrl: String
+    let artworkUrl100: String
 }

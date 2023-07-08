@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SearchBarView: View {
     @Binding var text: String
-    var placeholder: String
-    
     @Binding var debouncedText : String
-    let debounceInterval = 0.5
     @State var timer: Timer?
+    var placeholder: String
+    // 500ms debounce
+    let debounceInterval = 0.5
     
     var body: some View {
         VStack{
@@ -57,6 +57,6 @@ struct SearchBarView_Previews: PreviewProvider {
     @State static var debounceString = ""
     
     static var previews: some View {
-        SearchBarView(text: $searchString, placeholder: "Search..", debouncedText: $debounceString)
+        SearchBarView(text: $searchString, debouncedText: $debounceString, placeholder: "Search..")
     }
 }
