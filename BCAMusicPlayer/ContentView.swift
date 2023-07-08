@@ -16,24 +16,26 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                if showSplash {
-                    SplashView()
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                withAnimation {
-                                    showSplash = false
-                                }
-                            }
-                        }
-                } else {
-                    NavigationView {
-                        HomeView()
-                    }
-                    
-                }
-            }.onAppear {
-                artistVM.loadAudios()
+                SongListView()
             }
+//                if showSplash {
+//                    SplashView()
+//                        .onAppear {
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                                withAnimation {
+//                                    showSplash = false
+//                                }
+//                            }
+//                        }
+//                } else {
+//                    NavigationView {
+//                        HomeView()
+//                    }
+//
+//                }
+//            }.onAppear {
+//                artistVM.loadAudios()
+//            }
         }
     }
 }

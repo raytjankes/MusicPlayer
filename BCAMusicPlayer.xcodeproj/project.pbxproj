@@ -43,6 +43,8 @@
 		7DE2DA572A4C509F00B7EA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DE2DA552A4C509F00B7EA32 /* GoogleService-Info.plist */; };
 		7DE99B142A4A6CF1004084CB /* MiniplayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE99B132A4A6CF1004084CB /* MiniplayerView.swift */; };
 		7DE99B162A4A7AF8004084CB /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE99B152A4A7AF8004084CB /* Artist.swift */; };
+		7DF09F992A58F31400A70F00 /* ItunesMusicServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF09F982A58F31400A70F00 /* ItunesMusicServices.swift */; };
+		7DF09F9B2A58F6C500A70F00 /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF09F9A2A58F6C500A70F00 /* SongListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		7DE2DA552A4C509F00B7EA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7DE99B132A4A6CF1004084CB /* MiniplayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniplayerView.swift; sourceTree = "<group>"; };
 		7DE99B152A4A7AF8004084CB /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		7DF09F982A58F31400A70F00 /* ItunesMusicServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesMusicServices.swift; sourceTree = "<group>"; };
+		7DF09F9A2A58F6C500A70F00 /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 		7D30ED6F2A491681005C0FF7 /* BCAMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				7DF09F932A58F10C00A70F00 /* Services */,
 				7DE2DA552A4C509F00B7EA32 /* GoogleService-Info.plist */,
 				7D9CF5092A49A18F0048BF5C /* Info.plist */,
 				7D7C073B2A49331E000F73A1 /* Extension */,
@@ -211,6 +216,7 @@
 				7D7C074F2A493701000F73A1 /* SplashView.swift */,
 				7D7C07842A497BEF000F73A1 /* HomeView.swift */,
 				7D9CF4FA2A4984AF0048BF5C /* PlayerView.swift */,
+				7DF09F9A2A58F6C500A70F00 /* SongListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,6 +268,14 @@
 				7DE2DA4A2A4BAF1A00B7EA32 /* CreatorViewModelTests.swift */,
 			);
 			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
+		7DF09F932A58F10C00A70F00 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7DF09F982A58F31400A70F00 /* ItunesMusicServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,11 +439,13 @@
 				7DE99B162A4A7AF8004084CB /* Artist.swift in Sources */,
 				7D7C07812A497B7E000F73A1 /* Song.swift in Sources */,
 				7D8A18FB2A4AEAEF00C9B317 /* CreatorCard.swift in Sources */,
+				7DF09F992A58F31400A70F00 /* ItunesMusicServices.swift in Sources */,
 				7D7C07582A493D97000F73A1 /* Color.swift in Sources */,
 				7D7C07502A493702000F73A1 /* SplashView.swift in Sources */,
 				7D8A18FD2A4AEB1A00C9B317 /* AudioItem.swift in Sources */,
 				7D7C07852A497BEF000F73A1 /* HomeView.swift in Sources */,
 				7D30ED712A491681005C0FF7 /* BCAMusicPlayerApp.swift in Sources */,
+				7DF09F9B2A58F6C500A70F00 /* SongListView.swift in Sources */,
 				7D8A18F52A4AD1B900C9B317 /* CreatorViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

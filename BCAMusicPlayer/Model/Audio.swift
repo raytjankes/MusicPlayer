@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Audio: Hashable {
+class Audio: Hashable, Codable {
     private var id: UUID
     private var name: String
     private var time: String

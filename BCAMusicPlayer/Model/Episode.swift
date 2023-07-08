@@ -15,6 +15,10 @@ class Episode: Audio {
         super.init(name: name, time: time, file: file)
     }
     
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
+    
     override var getAudioGroup: String {
             return podcast
     }
